@@ -26,8 +26,19 @@
 }
 
 .bar {
-  background: #5f5de7;
+  display: block;
   height: 4%;
   margin: 0.5% 0;
-  width: 0;
+}
+
+.instagram {
+  background: #5f5de7;
+  display: inline-block;
+  height: 100%;
+}
+
+.twitter {
+  background: #E7A45D;
+  display: inline-block;
+  height: 100%;
 }

@@ -16,10 +16,15 @@ $(document).ready(function() {
   });
 
   socket.on('recvData', function(data) {
-    var dataObj = JSON.parse(data);
+    console.log(data);
+    var dataObj = JSON.parse(data),
+        instagram = dataObj.instagramcount[0],
+        twitter = dataObj.twittercount[0];
 
-    circles.addNewCircle(dataObj.count);
-    bars.addNewBar(dataObj.count);
+    console.log(instagram, twitter);
+
+    circles.addNewCircle(instagram + twitter);
+    bars.addNewBar(instagram, twitter);
   });
 
   function CircleChart() {
@@ -46,11 +51,11 @@ $(document).ready(function() {
   };
 
   function BarChart() {
-    this.addNewBar = function(width) {
+    this.addNewBar = function(instagramWidth, twitterWidth) {
       this.removeOldBar();
 
-      $barChart.append('<div class="bar"></div>');
-      $barChart.children().last().animate({width: width + '%'}, 1000);
+      $barChart.append('<div class="bar"><div class="instagram" style="width: '+ instagramWidth + '%;"></div><div class="twitter" style="width: '+ twitterWidth +'%;"></div></div>');
+      $barChart.children().last().animate({width: '100%'}, 1000);
     };
 
     this.removeOldBar = function() {
