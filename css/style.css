@@ -1,0 +1,17 @@
+.circle-container {
+  display: block;
+  width: 100%;
+  height: 50%;
+  position: absolute;
+}
+
+.circle {
+  background: #8D00C4;
+  border-radius: 50%;
+  height: 0;
+  left: 50%;
+  opacity: .5;
+  position: absolute;
+  top: 50%;
+  width: 0;
+}
