@@ -26,10 +26,10 @@ $(document).ready(function() {
     this.addNewCircle = function(radius) {
       $circleChart.append('<div class="circle"></div>');
       $circleChart.children().last().animate({
-        width: radius*2 + 'px', 
-        height: radius*2 + 'px', 
-        'margin-top': -radius + 'px',
-        'margin-left': -radius + 'px'
+        width: radius*4 + 'px', 
+        height: radius*4 + 'px', 
+        'margin-top': -(radius*2) + 'px',
+        'margin-left': -(radius*2) + 'px'
       }, 1000);
 
       this.removeOldCircles();
@@ -37,8 +37,8 @@ $(document).ready(function() {
 
     this.removeOldCircles = function() {
       var circles = $circleChart.children();
-      if ( circles.length > 2 ) {
-        circles.first().animate({opacity: 0}, 1000, function(){
+      if ( circles.length >= 5 ) {
+        circles.first().animate({opacity: 0}, 500, function(){
            this.remove();
         });
       }
@@ -46,11 +46,21 @@ $(document).ready(function() {
   };
 
   function BarChart() {
-    this.addNewBar = function(height) {
-      console.log('Add New Circle = ', height);
+    this.addNewBar = function(width) {
+      this.removeOldBar();
+
+      $barChart.append('<div class="bar"></div>');
+      $barChart.children().last().animate({width: width + '%'}, 1000);
     };
 
     this.removeOldBar = function() {
+      var bars = $barChart.children();
+
+      if( bars.length >= 20 ) {
+        bars.first().animate({height: 0}, 500, function() {
+          this.remove();
+        });
+      }
     };
   };
   
